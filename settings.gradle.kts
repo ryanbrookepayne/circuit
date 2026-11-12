@@ -167,16 +167,26 @@ pluginManagement {
         includeModule("com.gradle.develocity", "com.gradle.develocity.gradle.plugin")
         includeModule("org.gradle.kotlin.kotlin-dsl", "org.gradle.kotlin.kotlin-dsl.gradle.plugin")
         includeModule("org.gradle.kotlin", "gradle-kotlin-dsl-plugins")
+        includeModule("org.gradle.toolchains", "foojay-resolver")
+        includeModule("org.gradle.toolchains", "foojay-resolver-convention")
+        includeModule(
+          "org.gradle.toolchains.foojay-resolver-convention",
+          "org.gradle.toolchains.foojay-resolver-convention.gradle.plugin",
+        )
       }
     }
   }
   plugins {
     // Release notes at https://docs.gradle.com/enterprise/gradle-plugin/#release_history
     id("com.gradle.develocity") version "4.4.0"
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
   }
 }
 
-plugins { id("com.gradle.develocity") }
+plugins {
+  id("com.gradle.develocity")
+  id("org.gradle.toolchains.foojay-resolver-convention")
+}
 
 val VERSION_NAME: String by extra.properties
 
